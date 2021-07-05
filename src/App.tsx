@@ -4,8 +4,10 @@ import UserDetails from './components/UserDetails'
 import { getUsers } from './data/apiCalls'
 import { transformUsers } from './data/transformers'
 
-const App = () => {
-  const [userList, setUserList] = useState()
+import { TransformedUser } from './shared/types'
+
+const App: React.FC = () => {
+  const [userList, setUserList] = useState<TransformedUser[] | null>(null)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -22,7 +24,7 @@ const App = () => {
     getUserData()
   }, [])
 
-  const renderUser = ({ id, username, name, address }) => {
+  const renderUser = ({ id, username, name, address }: TransformedUser) => {
     return (
       <li className="list-group-item" key={id}>
         <h3 className="d-inline">
