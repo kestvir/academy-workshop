@@ -1,4 +1,4 @@
 import axios from 'axios'
-import { ServerResponse } from '../shared/types'
+import { UserDto } from '../types/dtos/user'
 
-export const getUsers = (): Promise<ServerResponse> => axios.get('http://jsonplaceholder.typicode.com/users')
+export const getUsers = () => axios.get<Array<UserDto>>('http://jsonplaceholder.typicode.com/users')

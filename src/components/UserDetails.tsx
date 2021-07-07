@@ -1,17 +1,16 @@
 import { Component } from 'react'
-import { TransformedAddress } from '../shared/types'
 
-type UserDetailsProps = TransformedAddress
-type UserDetailsState = { isAddressVisible: boolean }
+type Props = { city: string; street: string; suite: string; zip: string }
+type State = { isAddressVisible: boolean }
 
-class UserDetails extends Component<UserDetailsProps, UserDetailsState> {
-  state = {
+class UserDetails extends Component<Props, State> {
+  state: Readonly<State> = {
     isAddressVisible: false,
   }
 
-  toggleAddress = (): void => this.setState((state) => ({ isAddressVisible: !state.isAddressVisible }))
+  toggleAddress = () => this.setState((state) => ({ isAddressVisible: !state.isAddressVisible }))
 
-  render(): JSX.Element {
+  render() {
     const { city, street, suite, zip } = this.props
     const { isAddressVisible } = this.state
 

@@ -4,10 +4,10 @@ import UserDetails from './components/UserDetails'
 import { getUsers } from './data/apiCalls'
 import { transformUsers } from './data/transformers'
 
-import { TransformedUser } from './shared/types'
+import { UserModel } from './types/models/user'
 
-const App: React.FC = () => {
-  const [userList, setUserList] = useState<TransformedUser[] | null>(null)
+const App = () => {
+  const [userList, setUserList] = useState<Array<UserModel>>()
 
   useEffect(() => {
     const getUserData = async () => {
@@ -24,7 +24,7 @@ const App: React.FC = () => {
     getUserData()
   }, [])
 
-  const renderUser = ({ id, username, name, address }: TransformedUser) => {
+  const renderUser = ({ id, username, name, address }: UserModel) => {
     return (
       <li className="list-group-item" key={id}>
         <h3 className="d-inline">
